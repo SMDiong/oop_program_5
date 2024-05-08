@@ -10,8 +10,8 @@ while True:
 
     # The user will input as many numbers as they want instead of just two
     while True:
-        print("\nThe maximum number count is 10.")
-        for i in range(10):
+        print("\nThe maximum number count is 20.")
+        for i in range(20):
             if i == 0:
                 prompt = "Please enter your 1st number or press ENTER to finish: "
             elif i == 1:
@@ -45,7 +45,7 @@ while True:
     while True:
         print("\nChoose one of the four math operations by their corresponding initials.")
         print("(A)ddition, (S)ubtraction, (M)ultiplication, (D)ivision.")
-        math_operation = input("\nPlease enter your choice (A/S/M/D): ")
+        math_operation = input("\nPlease enter your operation (A/S/M/D): ")
 
         # Input Validation and Display Error
         if math_operation.upper() not in ['A', 'S', 'M', 'D']:
@@ -55,30 +55,35 @@ while True:
         # Calculations
         # Addition
         if math_operation.upper() == 'A':
+            operation_name = "Addition"
             user_result = sum(numbers)
 
         # Subtraction
         elif math_operation.upper() == 'S':
+            operation_name = "Subtraction"
             user_result = numbers[0] - sum(numbers[1:])
 
         # Multiplication
         elif math_operation.upper() == 'M':
+            operation_name = "Multiplication"
             user_result = 1
             for num in numbers:
                 user_result *= num
 
         # Division
         elif math_operation.upper() == 'D':
+            operation_name = "Division"
             if 0 not in numbers[1:]:
                 user_result = numbers[0]
                 for num in numbers[1:]:
                     user_result /= num
+            # Zero Division Error
             else:
-                print("\nError: Division by zero is not allowed.")
+                print("\nDivision by zero is invalid.")
                 continue
 
         # Display results
-        print(f"\nThe result of the operation is: {user_result}")
+        print(f"\nThe result of the {operation_name} operation is: {user_result}")
 
         # Ask the user whether to try again or not, if not display grateful message
         try_again = input("\nDo you want to try the calculator again? (Yes/No): ")
