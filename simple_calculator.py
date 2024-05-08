@@ -1,10 +1,18 @@
 # Diong, Shan Marc C.
 # BSCPE 1-2
 
-# Greet the user
-user_name = input("Please enter your name: ")
-print(f"\nHello {user_name}! Welcome to my Simple App Calculator!")
+# Greet and enter username
+while True:
+    user_name = input("Please enter your name: ")
 
+    # Input Validation and Display Error
+    if not user_name.isalpha() or " " in user_name:
+        print("\nInvalid input! Please enter a valid name without symbols, spaces, or numbers.\n")
+    else:
+        print(f"\nHello {user_name}! Welcome to my Simple App Calculator!")
+        break
+
+# The loop for Try Again function
 while True:
     numbers = []
 
@@ -33,6 +41,8 @@ while True:
                     break
                 except ValueError:
                     user_number = input("\nInvalid input! Please enter a valid number: ")
+                    if user_number == "":
+                        break
 
         # Error if there are not enough numbers
         if len(numbers) < 2:
@@ -41,7 +51,7 @@ while True:
         else:
             break
 
-    # Ask what of the four operations will be used
+    # Ask the user what of the four operations will be used
     while True:
         print("\nChoose one of the four math operations by their corresponding initials.")
         print("(A)ddition, (S)ubtraction, (M)ultiplication, (D)ivision.")
@@ -85,7 +95,7 @@ while True:
         # Display results
         print(f"\nThe result of the {operation_name} operation is: {user_result}")
 
-        # Ask the user whether to try again or not, if not display grateful message
+        # Ask the user whether to try again or not. If not, display grateful message
         try_again = input("\nDo you want to try the calculator again? (Yes/No): ")
         if try_again.lower() == "yes":
             break
