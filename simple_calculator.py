@@ -26,11 +26,13 @@ while True:
                 break
 
             # Input Validation and Display Error
-            try:
-                number = float(user_number)
-                numbers.append(number)
-            except ValueError:
-                user_number = input("\nInvalid input! Please enter a valid number: ")
+            while True:
+                try:
+                    number = float(user_number)
+                    numbers.append(number)
+                    break
+                except ValueError:
+                    user_number = input("\nInvalid input! Please enter a valid number: ")
 
         # Error if there are not enough numbers
         if len(numbers) < 2:
