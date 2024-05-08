@@ -4,13 +4,15 @@
 # Greet the user
 user_name = input("Please enter your name: ")
 print(f"\nHello {user_name}! Welcome to my Simple App Calculator!")
+numbers = []
 
 # The user will input as many numbers as they want instead of just two
 while True:
+    print("\nThe maximum number count is 10.")
     for i in range(10):
         if i == 0:
             prompt = "Please enter your 1st number or press ENTER to finish: "
-            print("\nThe maximum number count is 10.")
+
         elif i == 1:
             prompt = "\nPlease enter your 2nd number or press ENTER to finish: "
         elif i == 2:
@@ -22,11 +24,32 @@ while True:
         if user_number == "":
             break
 
+        # Input Validation
+        try:
+            number = float(user_number)
+            numbers.append(number)
+        except ValueError:
+            print("\nInvalid input! Please enter a number.")
+            break
+
+    # Error if there are not enough numbers
+    if len(numbers) < 2:
+        print("\nInvalid input! At least two numbers are required.")
+        continue
+    break
+
 # Ask what of the four operations will be used
+while True:
     print("\nChoose one of the four math operations by their corresponding initials.")
     print("(A)ddition, (S)ubtraction, (M)ultiplication, (D)ivision.")
     math_operation = input("\nPlease enter your choice (A/S/M/D): ")
 
+    # Input Validation
+    if math_operation.upper() not in ['A', 'S', 'M', 'D']:
+        print("\nInvalid math operation choice!")
+        break
+
+# Calculations
 
 # Display results
 
