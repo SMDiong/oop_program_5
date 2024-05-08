@@ -1,15 +1,21 @@
 # Diong, Shan Marc C.
 # BSCPE 1-2
 
+# Word Format
+green = "\033[1;32m"
+blue = "\033[1;34m"
+red = "\033[1;31m"
+yellow = "\033[1;33m"
+
 # Greet and enter username
 while True:
-    user_name = input("Please enter your name: ")
+    user_name = input(green + "Please enter your name: ")
 
     # Input Validation and Display Error
     if not user_name.isalpha() or " " in user_name:
-        print("\nInvalid input! Please enter a valid name without symbols, spaces, or numbers.\n")
+        print(red + "\nInvalid input! Please enter a valid name without symbols, spaces, or numbers.\n" + green)
     else:
-        print(f"\nHello {user_name}! Welcome to my Simple App Calculator!")
+        print(green + f"\nHello {blue + user_name + green}! Welcome to my Simple App Calculator!")
         break
 
 # The loop for Try Again function
@@ -18,16 +24,16 @@ while True:
 
     # The user will input as many numbers as they want instead of just two
     while True:
-        print("\nThe maximum number count is 20.")
+        print(yellow + "\nThe maximum number count is 20." + green)
         for i in range(20):
             if i == 0:
-                prompt = "Please enter your 1st number or press ENTER to finish: "
+                prompt = f"Please enter your 1st number: "
             elif i == 1:
-                prompt = "\nPlease enter your 2nd number or press ENTER to finish: "
+                prompt = f"\nPlease enter your 2nd number: "
             elif i == 2:
-                prompt = "\nPlease enter your 3rd number or press ENTER to finish: "
+                prompt = f"\nPlease enter your 3rd number or press {yellow}ENTER{green} to finish: "
             else:
-                prompt = f"\nPlease enter your {i + 1}th number or press ENTER to finish: "
+                prompt = f"\nPlease enter your {i + 1}th number or press {yellow}ENTER{green} to finish: "
 
             user_number = input(prompt)
             if user_number == "":
@@ -40,13 +46,13 @@ while True:
                     numbers.append(number)
                     break
                 except ValueError:
-                    user_number = input("\nInvalid input! Please enter a valid number: ")
+                    user_number = input(red + "\nInvalid input! Please enter a valid number: " + green)
                     if user_number == "":
                         break
 
         # Error if there are not enough numbers
         if len(numbers) < 2:
-            print("\nInvalid input! At least two numbers are required.")
+            print(red + "\nInvalid input! At least two numbers are required." + green)
             numbers = []
         else:
             break
@@ -54,12 +60,12 @@ while True:
     # Ask the user what of the four operations will be used
     while True:
         print("\nChoose one of the four math operations by their corresponding initials.")
-        print("(A)ddition, (S)ubtraction, (M)ultiplication, (D)ivision.")
-        math_operation = input("\nPlease enter your operation (A/S/M/D): ")
+        print(yellow + "\t\t(A)ddition, (S)ubtraction, (M)ultiplication, (D)ivision." + green)
+        math_operation = input(f"\nPlease enter your operation {yellow}(A/S/M/D){green}: ")
 
         # Input Validation and Display Error
         if math_operation.upper() not in ['A', 'S', 'M', 'D']:
-            print("\nInvalid math operation choice!")
+            print(red + "\nInvalid math operation choice!" + green)
             continue
 
         # Calculations
@@ -89,18 +95,21 @@ while True:
                     user_result /= num
             # Zero Division Error
             else:
-                print("\nDivision by zero is invalid.")
+                print(red + "\nDivision by zero is invalid." + green)
                 continue
 
         # Display results
-        print(f"\nThe result of the {operation_name} operation is: {user_result}")
+        print(f"\nThe result of the {yellow}{operation_name}{green} operation is: {blue}{user_result}{green}")
 
         # Ask the user whether to try again or not. If not, display grateful message
-        try_again = input("\nDo you want to try the calculator again? (Yes/No): ")
-        if try_again.lower() == "yes":
-            break
-        elif try_again.lower() == "no":
-            print(f"\nThe program ended. Thank you for your participation, {user_name}!")
-            exit()
-        else:
-            print("\nInvalid input! Please enter 'Yes' or 'No'.")
+        while True:
+            try_again = input(f"\nDo you want to try the calculator again? {yellow}(Yes/No){green}: ")
+            if try_again.lower() == "yes":
+                break
+            elif try_again.lower() == "no":
+                print(f"\nThe program ended. Thank you for your participation, {blue}{user_name}{green}!")
+                exit()
+            else:
+                print(red + "\nInvalid input! Please enter 'Yes' or 'No' only." + green)
+                continue
+        break
