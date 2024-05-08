@@ -12,7 +12,6 @@ while True:
     for i in range(10):
         if i == 0:
             prompt = "Please enter your 1st number or press ENTER to finish: "
-
         elif i == 1:
             prompt = "\nPlease enter your 2nd number or press ENTER to finish: "
         elif i == 2:
@@ -47,11 +46,32 @@ while True:
     # Input Validation
     if math_operation.upper() not in ['A', 'S', 'M', 'D']:
         print("\nInvalid math operation choice!")
-        break
+        continue
 
 # Calculations
+    # Addition
+    if math_operation.upper() == 'A':
+        user_result = sum(numbers)
+
+    # Subtraction
+    elif math_operation.upper() == 'S':
+        user_result = numbers[0] - sum(numbers[1:])
+
+    # Multiplication
+    elif math_operation.upper() == 'M':
+        user_result = 1
+        for num in numbers:
+            user_result *= num
+
+    # Division
+    elif math_operation.upper() == 'D':
+        user_result = numbers[0]
+        for num in numbers[1:]:
+            user_result /= num
+    break
 
 # Display results
+print(f"\nThe result of the operation is: {user_result}")
 
 # Ask the user whether to try again or not, if not display grateful message
 
